@@ -3,6 +3,9 @@ pipeline {
     triggers {
         pollSCM('* * * * *')
     }
+    tools {
+        jdk 'Jdk12'
+    }
     stages {
         stage('Prepare') {
             steps {
