@@ -1,31 +1,34 @@
 pipeline {
     agent any
-    triggers {
+    trigger {
         pollSCM('* * * * *')
     }
     tools {
         jdk 'Jdk12'
     }
-    stages {
-        stage('Prepare') {
-            steps {
-                    echo 'Collecting some files'
-                    echo 'Prepareing more stuff'
+
+    stages{
+        stage('Prepare the flow'){
+            steps{
+                echo 'Hi now we are preparing the flow'
             }
         }
-        stage('Build') {
-                    steps {
+
+        stage('Test our code'){
+            steps{
+                sh './gradlew test'
+            }
+        }
+
+        stage('Build our application and create a jarfile'){
+                    steps{
                         sh './gradlew build -x test'
                     }
                 }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-        stage('Update our documentation with release') {
-            steps {
-                echo 'Adding stuff to wiki pages'
+
+        stage('Deploy to our test environments'){
+            steps{
+                echo 'Deploy deploy deploy'
             }
         }
     }
