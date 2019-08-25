@@ -1,17 +1,15 @@
 pipeline {
     agent any
     triggers {
-        pollSCM('H/30 * * * *')
+        pollSCM('* * * * *')
     }
     stages {
         stage('Prepare') {
             steps {
-                echo 'Collecting some files'
+                    echo 'Collecting some files'
+                    echo 'Prepareing more stuff'
             }
-            steps {
-                echo 'Prepareing more stuff'
-            }
-    }
+        }
         stage('Build') {
                     steps {
                         sh './gradlew build -x test'
