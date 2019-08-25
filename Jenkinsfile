@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    triggers {
+        pollSCM 'H/10 * * * *'
+    }
     stages {
         stage('Prepare') {
             steps {
@@ -12,7 +14,7 @@ pipeline {
         }
         stage('Build') {
                     steps {
-                        gradle build -x test
+                        sh ./gradlew build -x test
                     }
                 }
         stage('Deploy') {
