@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        pollSCM 'H/30 * * * *'
+        pollSCM('H/30 * * * *')
     }
     stages {
         stage('Prepare') {
@@ -11,10 +11,10 @@ pipeline {
             steps {
                 echo 'Prepareing more stuff'
             }
-        }
+    }
         stage('Build') {
                     steps {
-                        sh ./gradlew build -x test
+                        sh './gradlew build -x test'
                     }
                 }
         stage('Deploy') {
@@ -23,9 +23,9 @@ pipeline {
             }
         }
         stage('Update our documentation with release') {
-                    steps {
-                        echo 'Adding stuff to wiki pages'
-                    }
-                }
+            steps {
+                echo 'Adding stuff to wiki pages'
+            }
+        }
     }
 }
