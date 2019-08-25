@@ -8,6 +8,11 @@ pipeline {
     }
 
     stages{
+        stage('Before prepare the flow!!! We needed to move some files'){
+                steps{
+                    echo 'This is a stage before the prepareflow!!! '
+                }
+            }
         stage('Prepare the flow'){
             steps{
                 echo 'Hi now we are preparing the flow'
